@@ -1,7 +1,11 @@
-<div class="grid grid-cols-3 gap-8">
-  <app-product  [title]="'Produco 1'" [price]="100" [img]="'https://picsum.photos/640/640?r=1'" (addToCart)="fromChild($event)"/>
-  <app-product  [title]="'Produco 2'" [price]="100" [img]="'https://picsum.photos/640/640?r=2'" (addToCart)="fromChild($event)"/>
-  <app-product  [title]="'Produco 3'" [price]="100" [img]="'https://picsum.photos/640/640?r=3'" (addToCart)="fromChild($event)"/>
-  <app-product  [title]="'Produco 4'" [price]="100" [img]="'https://picsum.photos/640/640?r=4'" (addToCart)="fromChild($event)"/>
-  <app-product  [title]="'Produco 5'" [price]="100" [img]="'https://picsum.photos/640/640?r=5'" (addToCart)="fromChild($event)"/>
+<div class="conteiner mx-auto">
+  <app-header [cart]="cartList()"/>
+  <h3 class="text-lg">{{ cartList().length }}</h3>
+  <div class="grid grid-cols-4 gap-8 mt-5">
+    @for (product of  products(); track product.id)  {
+      <app-product
+            [product]="product"
+            (addToCart)="addToCart($event)"/>
+    }
+  </div>
 </div>
